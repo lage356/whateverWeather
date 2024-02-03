@@ -8,15 +8,12 @@ let search =citySearch.value;
 
 date.textContent = dateJ;
 
-var getRepoDataWeather = function (lati, long){
+var getRepoDataWeather = function (lat, lon){
 
-     lati = String(lati);
-     long = String(long);
 
-     console.log(lati)
 
     
-    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat='+ lati +'&lon='+ long +'&appid=b99fa940a9ff0f4458e80ba9b4be202d&units';
+    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon +'&appid=b99fa940a9ff0f4458e80ba9b4be202d';
     fetch(apiUrl)
     .then(function(response){
         if(response.ok){
@@ -41,8 +38,10 @@ var getGeoLocation = function(search) {
         if (response.ok){
             console.log(response);
             response.json().then(function(data){
-                console.log(data);
-                saveLocations(data);
+                console.log(data[0].lat, data[0].lon);
+                var lat = data[0].lat;
+                var lon = data[0].lon;
+                getRepoDataWeather(lat,lon);
             });
         } else {
             alert("Error" + response.statusText);
@@ -55,23 +54,22 @@ var getGeoLocation = function(search) {
     
 };
 
-var saveLocations = function (locations){
+// var saveLocations = function (locations){
  
 
-    for (var i=0; i<locations.length; i++){
+//     for (var i=0; i<locations.length; i++){
 
-        var lat = locations[i].lat;
-        var lon = locations[i].lon
 
-        var lati = parseFloat(lat);
-        var long = parseFloat(lon);
 
-        console.log(lati, long);
-        getRepoDataWeather(lati,long);
-    }
+//         var lati = parseFloat(lat);
+//         var long = parseFloat(lon);
+
+//         console.log(lati, long);
+//         getRepoDataWeather(lati,long);
+//     }
     
 
-}
+// }
 
 
 $( ".btn" ).on( "click", function( event ) {
