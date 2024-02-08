@@ -66,6 +66,7 @@ var displayTodayData = function (data) {
 };
 
 var displayForcastData = function (data) {
+  fiveDayForcast.innerHTML =" "
   for (var i = 6; i < data.length; i += 8) {
     // console.log(data[i]);
     // console.log(data[i].dt_txt);
