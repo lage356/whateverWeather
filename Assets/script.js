@@ -12,6 +12,10 @@ let tempEl = document.createElement("li");
 let windEl = document.createElement("li");
 let humEl = document.createElement("li");
 
+// let dateEle = document.createElement("p");
+// let tempe = document.createElement("p");
+// let windEle = document.createElement("p");
+// let humidi = document.createElement("p");
 
 var getDataWeather = function (lat, lon) {
   var apiUrl =
@@ -25,8 +29,8 @@ var getDataWeather = function (lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
       displayTodayData(data, data.list);
+
       displayForcastData(data.list);
     })
     .catch(function (error) {
@@ -35,22 +39,19 @@ var getDataWeather = function (lat, lon) {
 };
 
 var displayTodayData = function (data) {
- 
-  let historyEl = document.createElement("a")
-  
+  let historyEl = document.createElement("a");
+
   cityEl.textContent = data.city.name;
   dateEl.textContent = dateJ;
 
-  tempEl.textContent = data.list[0].main.temp + " °C"
-  tempEl.style.listStyleType = 'none';
+  tempEl.textContent = "Temp: " + data.list[0].main.temp + " °C";
+  tempEl.style.listStyleType = "none";
 
-  windEl.textContent = data.list[0].wind.speed + " Km/Hra";
-  windEl.style.listStyleType = 'none';
+  windEl.textContent = "Wind: " + data.list[0].wind.speed + " Km/Hra";
+  windEl.style.listStyleType = "none";
 
-  humEl.textContent = data.list[0].main.humidity + "%";
-  humEl.style.listStyleType = 'none';
-
-
+  humEl.textContent = "humidity: " + data.list[0].main.humidity + "%";
+  humEl.style.listStyleType = "none";
 
   historyEl.textContent = data.city.name;
   // historyEl.setAttribute('href')
@@ -62,7 +63,6 @@ var displayTodayData = function (data) {
   todayForecastContainer.append(humEl);
 
   history.append(historyEl);
-  
 };
 
 var displayForcastData = function (data) {
@@ -73,17 +73,28 @@ var displayForcastData = function (data) {
     var dateHour = data[i].dt_txt;
     var date = dateHour.split(" "[0]);
 
-    let newDiv = document.createElement("div")
+    let newDiv = document.createElement("div");
     newDiv.classList = "card text-nowrap";
 
     let dateEle = document.createElement("p");
     newDiv.appendChild(dateEle);
-    
+
+    let tempe = document.createElement("p");
+    newDiv.append(tempe);
+
+    let windEle = document.createElement("p");
+    newDiv.append(windEle);
+
+    let humidi = document.createElement("p");
+    newDiv.append(humidi);
+
+    tempe.textContent = "Temp: " + data[i].main.temp + " °C";
+    windEle.textContent = "Wind: " + data[i].wind.speed + " Km/Hra";
+    humidi.textContent = "humidity: " + data[i].main.humidity + "%";
 
     dateEle.textContent = date[0];
-    fiveDayForcast.append(newDiv);
 
-
+    fiveDayForcast.appendChild(newDiv);
   }
 };
 
@@ -109,8 +120,7 @@ var getGeoLocation = function (search) {
 
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
-   search = citySearch.value.trim();
+  search = citySearch.value.trim();
   getGeoLocation(search);
   citySearch.value = " ";
-
 });
