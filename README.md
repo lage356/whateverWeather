@@ -4,13 +4,13 @@ Welcome to the Whatever Weather Website, feel free to search for all the cities 
 
 ## Features
 
-- **Today weather ** Shows you the city you have searched 
+- **Today weather** Shows you the city you have searched 
 - **5-day forecast:** Displays 5 day forecast
 
 
 ## Getting Started
 
-1. Open the [Whatever Weather]().
+1. Open the [Whatever Weather](https://lage356.github.io/whateverWeather/).
 2. Click on the text input and enter the city
 3. You will see the city you searched for will go to history
 4. Click on any historical event and you will see the weather for that city
@@ -28,8 +28,8 @@ Welcome to the Whatever Weather Website, feel free to search for all the cities 
 - HTML
 - CSS
 - JavaScript
--Weather API
--Day JS
+- Weather API
+- Day JS
 
 ## Contributing
 
