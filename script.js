@@ -19,11 +19,11 @@ let humEl = document.createElement("li");
 
 var getDataWeather = function (lat, lon) {
   var apiUrl =
-    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    'http://api.openweathermap.org/data/2.5/forecast?lat=' +
     lat +
     "&lon=" +
     lon +
-    "&units=metric&appid=b99fa940a9ff0f4458e80ba9b4be202d";
+    '&units=metric&appid=b99fa940a9ff0f4458e80ba9b4be202d';
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
@@ -101,9 +101,9 @@ var displayForcastData = function (data) {
 
 var getGeoLocation = function (search) {
   var apiUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    'http://api.openweathermap.org/geo/1.0/direct?q=' +
     search +
-    "&limit=1&appid=b99fa940a9ff0f4458e80ba9b4be202d";
+    '&limit=1&appid=b99fa940a9ff0f4458e80ba9b4be202d';
 
   fetch(apiUrl)
     .then(function (response) {
